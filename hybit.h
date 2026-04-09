@@ -3,14 +3,14 @@
 
 #include <stdint.h>
 
-#define HYBIT_SET(flag, idx)            \
-        {((uint8_t *)(flag))[(idx) / 8] |= 1 << ((idx) % 8);}
+#define HYBIT_SET(var, bit)            \
+        {((uint8_t *)(var))[(bit) / 8] |= 1 << ((bit) % 8);}
 
-#define HYBIT_CLR(flag, idx)            \
-        {((uint8_t *)(flag))[(idx) / 8] &= ~(1 << ((idx) % 8));}
+#define HYBIT_CLR(var, bit)            \
+        {((uint8_t *)(var))[(bit) / 8] &= ~(1 << ((bit) % 8));}
 
-#define HYBIT_GET(flag, idx)            \
-        ((((uint8_t *)(flag))[(idx) / 8] >> ((idx) % 8)) & 1)
+#define HYBIT_GET(var, bit)            \
+        ((((uint8_t *)(var))[(bit) / 8] >> ((bit) % 8)) & 1)
 
 #define HYBIT_SETUP                     (1)
 #define HYBIT_UNSET                     (0)
