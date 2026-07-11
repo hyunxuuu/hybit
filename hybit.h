@@ -3,27 +3,27 @@
 
 #include "hystd.h"
 
-#define HYBIT_SET(var, bit)     do { \
+#define _HYBIT_SET(var, bit)            do { \
         ((_reg_u *)(var))[(bit) / REG_BITS] |= \
         (_reg_u)1 << ((bit) & REG_MASK); \
         } while(0)
-
-#define HYBIT_CLR(var, bit)     do { \
+        
+#define _HYBIT_CLR(var, bit)            do { \
         ((_reg_u *)(var))[(bit) / REG_BITS] &= \
         ~((_reg_u)1 << ((bit) & REG_MASK)); \
         } while(0)
 
-#define HYBIT_GET(var, bit)     \
+#define _HYBIT_GET(var, bit)            \
         ((((_reg_u *)(var))[(bit) / REG_BITS] >> \
         ((bit) & REG_MASK)) & (_reg_u)1)
 
-#define HYBIT_SETUP                     (1)
-#define HYBIT_UNSET                     (0)
+#define _HYBIT_SETUP                    1
+#define _HYBIT_UNSET                    0
 
-#define HYFLAG_SET                      HYBIT_SET
-#define HYFLAG_CLR                      HYBIT_CLR
-#define HYFLAG_GET                      HYBIT_GET
-#define HYFLAG_SETUP                    HYBIT_SETUP
-#define HYFLAG_UNSET                    HYBIT_UNSET
+#define HYBIT_SET                       _HYBIT_SET
+#define HYBIT_CLR                       _HYBIT_CLR
+#define HYBIT_GET                       _HYBIT_GET
+#define HYBIT_SETUP                     _HYBIT_SETUP
+#define HYBIT_UNSET                     _HYBIT_UNSET
 
 #endif /* HYBIT_H */
