@@ -4,18 +4,18 @@
 #include "hystd.h"
 
 #define HYBIT_SET(var, bit)     do { \
-        ((reg_u *)(var))[(bit) / REG_BITS] |= \
-        (reg_u)1 << ((bit) & REG_MASK); \
+        ((_reg_u *)(var))[(bit) / REG_BITS] |= \
+        (_reg_u)1 << ((bit) & REG_MASK); \
         } while(0)
 
 #define HYBIT_CLR(var, bit)     do { \
-        ((reg_u *)(var))[(bit) / REG_BITS] &= \
-        ~((reg_u)1 << ((bit) & REG_MASK)); \
+        ((_reg_u *)(var))[(bit) / REG_BITS] &= \
+        ~((_reg_u)1 << ((bit) & REG_MASK)); \
         } while(0)
 
 #define HYBIT_GET(var, bit)     \
-        ((((reg_u *)(var))[(bit) / REG_BITS] >> \
-        ((bit) & REG_MASK)) & (reg_u)1)
+        ((((_reg_u *)(var))[(bit) / REG_BITS] >> \
+        ((bit) & REG_MASK)) & (_reg_u)1)
 
 #define HYBIT_SETUP                     (1)
 #define HYBIT_UNSET                     (0)
